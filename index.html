@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FrogOS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,420;0,6..72,560;1,6..72,420;1,6..72,500&family=Caveat:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="bg-shade"></div>
+
+    <div class="top-bar">
+        <p class="top-bar-item top-bar-brand" id="windowopen">FrogOS</p>
+        <p class="top-bar-item top-bar-status">🐸</p>
+        <p class="top-bar-item top-bar-time" id="timeElement">--:--</p>
+    </div>
+
+    <div class="desktop-apps" id="desktopApps">
+        <div class="app-icon" id="notesIcon" data-app="notes">
+            <img src="./images/icons/notes.png" alt="notes_app" class="app-icon-glyph" />
+            <p class="app-icon-label">Frog Notes</p>
+        </div>
+
+        <div class="app-icon" id="browserIcon" data-app="browser">
+            <img src="./images/icons/browser.png" alt="browser-app" class="app-icon-glyph" />
+            <p class="app-icon-label">Frog Browser</p>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="dock-icon" id="notesDockIcon" data-app="notes" title="Frog Notes">
+            <img src="./images/icons/notes.png" alt="notes_app" />
+        </div>
+
+        <div class="dock-icon" id="browserDockIcon" data-app="browser" title="Frog Browser">
+            <img src="./images/icons/browser.png" alt="browser-app" />
+        </div>
+    </div>
+
+    <!-- da frogs -->
+    <figure class="pinned">
+        <div class="pin"></div>
+        <img src="./images/frog-leaf.png" alt="amazing frog!!" />
+        <figcaption>omg frog!!</figcaption>
+    </figure>
+    
+    <figure class="taped">
+        <span class="tape tape-left"></span>
+        <span class="tape tape-right"></span>
+        <img src="./images/frog-rocks.png" alt="another one" />
+    </figure>
+
+    <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)" />
+    </svg>
+
+    <main class="hero">
+        <div class="window" id="welcome">
+            <div class="window-header" id="welcomeheader">
+                <span class="window-header-spacer"></span>
+                <p class="window-header-text">welcome.exe</p>
+                <div class="window-controls">
+                    <button class="dot dot-red" id="welcomeclose" aria-label="Close" title="Close"></button>
+                    <button class="dot dot-yellow" id="welcomeminimize" aria-label="Minimize" title="Minimize"></button>
+                    <button class="dot dot-green" id="welcomemaximize" aria-label="Maximize" title="Maximize"></button>
+                </div>
+            </div>
+            <p class="eyebrow">Personal operating system</p>
+            <h1 class="title">FrogOS</h1>
+            <p class="tagline">Tiny OS that lives in your browser</p>
+
+            <section class="card">
+                <p class="bio">
+                    FrogOS is an operating system built in HTML, CSS, JavaScript and Python about Frogs :)
+                </p>
+                <p class="bio">
+                    It comes with 2 apps: Frog Notes, for jotting things down that save automatically and Frog Browser, to search and visit other sites in the internet.
+                </p>
+            </section>
+        </div>
+
+        <div class="window notes-window" id="notes" style="display: none;">
+            <div class="window-header" id="notesheader">
+                <span class="window-header-spacer"></span>
+                <p class="window-header-text" id="notesHeaderText">Frog Notes</p>
+                <div class="window-controls">
+                    <button class="dot dot-red" id="notesclose" aria-label="Close" title="Close"></button>
+                    <button class="dot dot-yellow" id="notesminimize" aria-label="Minimize" title="Minimize"></button>
+                    <button class="dot dot-green" id="notesmaximize" aria-label="Maximize" title="Maximize"></button>
+                </div>
+            </div>
+            
+            <div class="notes-body">
+                <div class="notes-sidebar">
+                    <div class="notes-sidebar-toolbar">
+                        <button class="notes-add-btn" id="notesAddBtn" title="New note">+ New</button>
+                    </div>
+                    <div class="notes-entry-list" id="sidebar"></div>
+                </div>
+
+                <div class="notes-content">
+                    <div class="notes-content-toolbar">
+                        <button class="notes-delete-btn" id="notesDeleteBtn" title="Delete note">Delete</button>
+                    </div>
+                    <h3 id="notesTitleField" class="notes-title-field" contenteditable="true" data-placeholder="Untitled"></h3>
+                    <div id="notesBodyField" class="notes-body-field" contenteditable="true" data-placeholder="Start typing..."></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window browser-window" id="browser" style="display: none;">
+            <div class="window-header" id="browserheader">
+                <span class="window-header-spacer"></span>
+                <p class="window-header-text">Frog Browser</p>
+                <div class="window-controls">
+                    <button class="dot dot-red" id="browserclose" aria-label="Close" title="Close"></button>
+                    <button class="dot dot-yellow" id="browserminimize" aria-label="Minimize" title="Minimize"></button>
+                    <button class="dot dot-green" id="browsermaximize" aria-label="Maximize" title="Maximize"></button>
+                </div>
+            </div>
+            
+            <div class="browser-toolbar">
+                <button class="browser-nav-btn" id="browserBack" title="Back">&#8592;</button>
+                <button class="browser-nav-btn" id="browserForward" title="Forward">&#8594;</button>
+                <button class="browser-nav-btn" id="browserReload" title="Reload">&#8635;</button>
+
+                <form class="browser-address-form" id="browserAddressForm">
+                    <span class="browser-address-leaf">&#127807;</span>
+                    <input type="text" class="browser-address-input" id="browserAddressInput" placeholder="Search Ecosia or enter a URL" autocomplete="off" />
+                </form>
+
+                <button class="browser-newtab-btn" id="browserOpenNewTab" title="Open in new tab">&#8599;</button>
+            </div>
+
+            <div class="browser-body">
+                <div class="browser-home" id="browserHome">
+                    <img src="./images/icons/browser.png" alt="" class="browser-home-glyph" />
+                    <p class="browser-home-title">Frog Browser</p>
+                    <p class="browser-home-subtitle">powered by Ecosia</p>
+                    <form class="browser-home-form" id="browserHomeForm">
+                        <input type="text" class="browser-home-input" id="browserHomeInput" placeholder="Search Ecosia..." autocomplete="off" />
+                        <button type="submit" class="browser-home-submit">Search</button>
+                    </form>
+
+                    <div class="browser-home-shortcuts" id="browserHomeShortcuts">
+                        <button class="browser-shortcut" data-url="https://www.wikipedia.org/">Wikipedia</button>
+                        <button class="browser-shortcut" data-url="https://news.ycombinator.com">Hacker News</button>
+                        <button class="browser-shortcut" data-url="https://www.nasa.gov">NASA</button>
+                        <button class="browser-shortcut" data-url="https://www.nationalgeographic.com">Nat Geo</button>
+                    </div>
+                </div>
+
+                <iframe class="browser-frame" id="browserFrame" style="display: none;"></iframe>
+                <div class="browser-blocked" id="browserBlocked" style="display: none;">
+                    <p class="browser-blocked-title">This page won't let itself be shown here</p>
+                    <p class="browser-blocked-text">Most sites (including this one) block embedding for security reasons. Opening it in a new tab instead.</p>
+                    <button class="browser-blocked-btn" id="browserBlockedOpen">Open in new tab</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
