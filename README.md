@@ -6,8 +6,8 @@ A small operating system that runs in the browser. Built in HTML, CSS, JavaScrip
 
 - Desktop UI with draggable, minimizable, and maximizable windows
 - Top bar with clock and bottom dock with app icons
-- **Frog Notes** — a notes app with a sidebar list, add/delete, and autosave.
-- **Frog Browser** — a browser that searches Ecosia and loads pages through a proxy, with back/forward/reload buttons
+- **Frog Notes** : a notes app with a sidebar list, add/delete, and autosave.
+- **Frog Browser** : a browser that searches Ecosia and loads pages through a proxy, with back/forward/reload buttons
 
 ## Project structure
 
